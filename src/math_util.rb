@@ -26,4 +26,18 @@ class MathUtil
     [firstNumber, secondNumber]
   end
 
+  def self.exists_duplicates(numbers)
+    return nil if numbers.nil? || numbers.size < 2
+
+    numbers.each { |x|
+      if numbers[x.abs - 1].to_i < 0
+        return true
+      else
+        numbers[x.abs - 1] = numbers[x.abs - 1].to_i * (-1)
+      end
+    }
+
+    false
+  end
+
 end
