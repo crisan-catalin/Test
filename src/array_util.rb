@@ -1,11 +1,11 @@
 class ArrayUtil
 
   def self.sum_even_numbers(numbers)
-    numbers&.select(&:even?)&.sum
+    numbers.select(&:even?).sum
   end
 
   def self.two_largest_numbers(numbers)
-    return nil if numbers.nil? ||  numbers.size < 2
+    return numbers[0] if numbers.size == 1
 
     firstNumber = numbers[0]
     secondNumber = numbers[1]
@@ -27,13 +27,14 @@ class ArrayUtil
   end
 
   def self.exists_duplicates(numbers)
-    return nil if numbers.nil? || numbers.size < 2
+    return false if numbers.size < 2
 
     numbers.each do |x|
-      if numbers[x.abs - 1].to_i < 0
+      numberAsIndex = x.abs - 1
+      if numbers[numberAsIndex] < 0
         return true
       else
-        numbers[x.abs - 1] = numbers[x.abs - 1].to_i * (-1)
+        numbers[numberAsIndex] = -numbers[numberAsIndex]
       end
     end
 
