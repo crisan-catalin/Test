@@ -1,4 +1,4 @@
-class MathUtil
+class ArrayUtil
 
   def self.sum_even_numbers(numbers)
     numbers&.select(&:even?)&.sum
